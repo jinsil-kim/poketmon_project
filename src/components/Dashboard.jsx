@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import PoketmonCard from "./PoketmonCard";
+import { useContext } from "react";
+import { PoketmonContext } from "../context/PoketmonContext";
 
 const StDashboardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color:#ffcf0e;
+  background-color: #ffcf0e;
   border: 5px solid white;
   margin-bottom: 20px;
   border-radius: 10px;
@@ -23,8 +25,8 @@ const StPoketballContainer = styled.div`
 `;
 
 const TitleImg = styled.img`
-width: 500px;
-`
+  width: 500px;
+`;
 
 const StPoketballBox = styled.div`
   border: 2px dashed #c7c7c7;
@@ -42,18 +44,17 @@ const StImg = styled.img`
 //   color: black;
 // `;
 
-const Dashboard = ({ data, setData }) => {
-  const deleteBtn = (id) => {
-    const deletePoketmon = data.filter((singleData) => {
+const Dashboard = () => {
 
-      return singleData.id !== id;
-    });
-    setData(deletePoketmon);
-  };
+  const {data, deleteBtn} = useContext(PoketmonContext)
+
 
   return (
     <StDashboardContainer className="dashboard-container">
-      <TitleImg src="https://cdn.worldvectorlogo.com/logos/pokemon-23.svg" alt="" />
+      <TitleImg
+        src="https://cdn.worldvectorlogo.com/logos/pokemon-23.svg"
+        alt=""
+      />
       {/* <StTitle></StTitle> */}
       <StPoketballContainer className="poketball-container">
         {Array(6)
@@ -64,7 +65,7 @@ const Dashboard = ({ data, setData }) => {
                 key={data[index].id}
                 deleteBtn={deleteBtn}
                 data={data[index]}
-              />  
+              />
             ) : (
               // <StPoketmonBox key={data[index].korean_name}>
               //   <img src={data[index].img_url} alt="" />
@@ -74,10 +75,7 @@ const Dashboard = ({ data, setData }) => {
               //     삭제
               //   </StButton>
               // </StPoketmonBox>
-              <StPoketballBox
-                key={Math.random()}
-                className="poketball-box"
-              >
+              <StPoketballBox key={Math.random()} className="poketball-box">
                 <StImg
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/220px-Pokebola-pokeball-png-0.png"
                   alt=""
