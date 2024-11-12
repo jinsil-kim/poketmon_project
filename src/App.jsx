@@ -1,3 +1,5 @@
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import { PoketmonProvider } from "./context/PoketmonContext";
 import GlobalStyle from "./GlobalStyle";
@@ -10,6 +12,7 @@ function App() {
       <PoketmonProvider>
         <Router />
       </PoketmonProvider>
+      <ToastContainer />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 //Context 컴포넌트
@@ -20,6 +21,7 @@ const PoketmonProvider = ({ children }) => {
         imageAlt: "Custom image",
       });
     } else if (data.length < 6) {
+      toast.info(`${newPoketmon.korean_name} 추가 완료!`);
       setData([...data, newPoketmon]);
     } else {
       Swal.fire({
@@ -37,14 +39,13 @@ const PoketmonProvider = ({ children }) => {
     Swal.fire({
       title: "삭제하시겠습니까?",
       text: "저를 정말 삭제하실건가요?😥",
-      // icon: "warning",
       imageUrl:
-        "https://lh6.googleusercontent.com/proxy/6dmtaaDs0hcil-YbOYYqXsGZyq2FgSC6mlduF7O_LRWZf6a_Y7-T5hx8u7lCcPy0YtvlVWVJUMIs3DG7wpAlTVS5nRapeFMgUHcpfPDd",
+        "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMTdfNTIg/MDAxNTc5MjM3MDkzNDUx.CTO6suzgCcca2-vHK3JvYmovq3cZLejqcgpIuHv8v3wg.hkkiWlyTdjpVz5Cst4zo85rowJKCiDhvOFSS3lAvZjUg.JPEG.ooxzx/1579237092284.jpeg?type=w800",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "지워줘!",
-      cancelButtonText: "아니...",
+      confirmButtonText: "당장 지워!",
+      cancelButtonText: "아..안지울게..!",
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
