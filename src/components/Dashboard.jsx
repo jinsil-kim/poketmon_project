@@ -2,6 +2,7 @@ import styled from "styled-components";
 import PoketmonCard from "./PoketmonCard";
 import { useContext } from "react";
 import { PoketmonContext } from "../context/PoketmonContext";
+import { useNavigate } from "react-router-dom";
 
 const StDashboardContainer = styled.div`
   display: flex;
@@ -26,6 +27,10 @@ const StPoketballContainer = styled.div`
 
 const TitleImg = styled.img`
   width: 500px;
+  margin: 15px 0 30px 0;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const StPoketballBox = styled.div`
@@ -40,22 +45,19 @@ const StImg = styled.img`
   width: 100px;
 `;
 
-// const StTitle = styled.h1`
-//   color: black;
-// `;
 
 const Dashboard = () => {
+  const { data, deleteBtn } = useContext(PoketmonContext);
 
-  const {data, deleteBtn} = useContext(PoketmonContext)
-
+  const navigate = useNavigate();
 
   return (
     <StDashboardContainer className="dashboard-container">
       <TitleImg
+        onClick={() => navigate("/")}
         src="https://cdn.worldvectorlogo.com/logos/pokemon-23.svg"
-        alt=""
+        alt="포켓몬 로고"
       />
-      {/* <StTitle></StTitle> */}
       <StPoketballContainer className="poketball-container">
         {Array(6)
           .fill()
@@ -78,7 +80,7 @@ const Dashboard = () => {
               <StPoketballBox key={Math.random()} className="poketball-box">
                 <StImg
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/220px-Pokebola-pokeball-png-0.png"
-                  alt=""
+                  alt="포켓볼 이미지"
                 />
               </StPoketballBox>
             )

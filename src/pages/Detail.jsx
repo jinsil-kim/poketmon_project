@@ -28,11 +28,11 @@ const StDiv = styled.div`
     margin-top: 30px;
     border-radius: 8px;
     background-color: #ff5555;
-    font-weight: 600;
     color: white;
     &:hover {
       cursor: pointer;
       background-color: #fffa68;
+      color: black;
     }
   }
 `;

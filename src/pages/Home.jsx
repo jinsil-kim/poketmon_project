@@ -12,7 +12,7 @@ const StContainer = styled.div`
 
 const StImg = styled.img`
   width: 600px;
-  margin: 20px;
+  margin: 20px;   
 `;
 
 const StButton = styled.button`
@@ -21,10 +21,10 @@ const StButton = styled.button`
   color: white;
   padding: 15px 20px;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 25px;
   &:hover{
     cursor: pointer;
-    background-color: #ff3f09;
+    background-color: #000000;
   }
 `;
 
