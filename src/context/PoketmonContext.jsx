@@ -14,7 +14,7 @@ const PoketmonProvider = ({ children }) => {
     ) {
       Swal.fire({
         title: "저런...",
-        html:`이미 <strong>${newPoketmon.korean_name}</strong> 추가되어 있음!`,
+        html: `이미 <strong>${newPoketmon.korean_name}</strong> 추가되어 있음!`,
         imageUrl: `${newPoketmon.img_url}`,
         imageWidth: 200,
         imageAlt: "Custom image",
@@ -37,7 +37,9 @@ const PoketmonProvider = ({ children }) => {
     Swal.fire({
       title: "삭제하시겠습니까?",
       text: "저를 정말 삭제하실건가요?😥",
-      icon: "warning",
+      // icon: "warning",
+      imageUrl:
+        "https://lh6.googleusercontent.com/proxy/6dmtaaDs0hcil-YbOYYqXsGZyq2FgSC6mlduF7O_LRWZf6a_Y7-T5hx8u7lCcPy0YtvlVWVJUMIs3DG7wpAlTVS5nRapeFMgUHcpfPDd",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
