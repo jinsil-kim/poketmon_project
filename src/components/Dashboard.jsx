@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import PoketmonCard from "./PoketmonCard";
-import { useContext } from "react";
-import { PoketmonContext } from "../context/PoketmonContext";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const StDashboardContainer = styled.div`
   display: flex;
@@ -45,11 +44,9 @@ const StImg = styled.img`
   width: 100px;
 `;
 
-
 const Dashboard = () => {
-  const { data, deleteBtn } = useContext(PoketmonContext);
-
   const navigate = useNavigate();
+  const selectedPokemon = useSelector((state) => state.pokemon);
 
   return (
     <StDashboardContainer className="dashboard-container">
@@ -62,21 +59,15 @@ const Dashboard = () => {
         {Array(6)
           .fill()
           .map((_, index) =>
-            data[index] ? (
+            selectedPokemon[index] ? (
               <PoketmonCard
-                key={data[index].id}
-                deleteBtn={deleteBtn}
-                data={data[index]}
+                key={selectedPokemon[index].id}
+                id={selectedPokemon[index].id}
+                korean_name={selectedPokemon[index].korean_name}
+                img_url={selectedPokemon[index].img_url}
+                onDashboard={true}
               />
             ) : (
-              // <StPoketmonBox key={data[index].korean_name}>
-              //   <img src={data[index].img_url} alt="" />
-              //   <div>{data[index].korean_name}</div>
-              //   <p>No. {data[index].id}</p>
-              //   <StButton onClick={() => deleteBtn(data[index].id)}>
-              //     삭제
-              //   </StButton>
-              // </StPoketmonBox>
               <StPoketballBox key={Math.random()} className="poketball-box">
                 <StImg
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/220px-Pokebola-pokeball-png-0.png"

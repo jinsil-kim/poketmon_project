@@ -1,5 +1,7 @@
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { addPoketmon, deleteBtn } from "../slice/pokemonSlice";
 
 const StPoketmonBox = styled.div`
   background-color: white;
@@ -27,19 +29,20 @@ const StButton = styled.button`
   }
 `;
 
-const PoketmonCard = ({ data, addPoketmon, deleteBtn }) => {
+const PoketmonCard = ({ id, korean_name, img_url, onDashboard }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
-    <StPoketmonBox onClick={() => navigate(`/detail/${data.id}`)}>
-      <img src={data.img_url} alt={data.korean_name} />
-      <p>{data.korean_name}</p>
-      <p>No. {data.id}</p>
-      {addPoketmon ? (
+    <StPoketmonBox onClick={() => navigate(`/detail/${id}`)}>
+      <img src={img_url} alt={korean_name} />
+      <p>{korean_name}</p>
+      <p>No. {id}</p>
+      {!onDashboard ? (
         <StButton
           onClick={(e) => {
             e.stopPropagation();
-            addPoketmon(data);
+            dispatch(addPoketmon({ id, korean_name, img_url }));
           }}
         >
           추가
@@ -48,7 +51,7 @@ const PoketmonCard = ({ data, addPoketmon, deleteBtn }) => {
         <StButton
           onClick={(e) => {
             e.stopPropagation();
-            deleteBtn(data.id);
+            dispatch(deleteBtn(id));
           }}
         >
           삭제

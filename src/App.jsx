@@ -1,17 +1,18 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import { PoketmonProvider } from "./context/PoketmonContext";
 import GlobalStyle from "./GlobalStyle";
 import Router from "./shared/Router";
+import { PokemonStore } from "/src/store/PokemonStore.jsx";
+import { Provider } from "react-redux";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <PoketmonProvider>
+      <Provider store={PokemonStore}>
         <Router />
-      </PoketmonProvider>
+      </Provider>
       <ToastContainer />
     </>
   );

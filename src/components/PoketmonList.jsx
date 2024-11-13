@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import PoketmonCard from "./PoketmonCard";
 import MOCK_DATA from "./mock_data";
-import { useContext } from "react";
-import { PoketmonContext } from "../context/PoketmonContext";
 
 const StPoketmonList = styled.div`
   display: grid;
@@ -16,22 +14,10 @@ const StPoketmonList = styled.div`
 `;
 
 const PoketmonList = () => {
-  const { addPoketmon } = useContext(PoketmonContext);
-
   return (
     <StPoketmonList>
       {MOCK_DATA.map((poketmon) => (
-        <PoketmonCard
-          key={poketmon.id}
-          addPoketmon={addPoketmon}
-          data={poketmon}
-        />
-        // <StPoketmonBox key={poketmon.id}>
-        //   <img src={poketmon.img_url} alt="" />
-        //   <div>{poketmon.korean_name}</div>
-        //   <p>No. {poketmon.id}</p>
-        //   <StButton onClick={() => addPoketmon(poketmon)}>추가</StButton>
-        // </StPoketmonBox>
+        <PoketmonCard key={poketmon.id} onDashboard={false} id={poketmon.id} korean_name={poketmon.korean_name} img_url={poketmon.img_url} />
       ))}
     </StPoketmonList>
   );
