@@ -7,7 +7,7 @@ const pokemonSlice = createSlice({
   initialState: [],
   reducers: {
     addPoketmon: (state, action) => {
-      console.log(1);
+
       if (
         state.find(
           (poketmon) => poketmon.korean_name === action.payload.korean_name
